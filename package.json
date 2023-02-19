@@ -1,8 +1,7 @@
 {
   "name": "kickstart",
   "version": "1.0.0",
-  "description": "POC ethereum Smart Contract for Kickstart project",
-  "private": true,
+  "description": "POC ethereum Smart Contract for Kickstart project with Next.js",
   "scripts": {
     "test": "NODE_OPTIONS=--openssl-legacy-provider mocha",
     "deploy": "NODE_OPTIONS=--openssl-legacy-provider node ethereum/deploy.js",
@@ -26,14 +25,18 @@
     "web3",
     "ethereum",
     "smart contract",
-    "javascript"
+    "javascript",
+    "next.js"
   ],
   "dependencies": {
-    "dotenv": "^16.0.3",
     "@truffle/hdwallet-provider": "^2.0.1",
+    "dotenv": "^16.0.3",
     "fs-extra": "^10.0.0",
     "ganache-cli": "^6.12.2",
     "mocha": "^9.1.2",
+    "next": "^13.1.6",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "solc": "^0.4.17",
     "web3": "^1.6.0"
   },
