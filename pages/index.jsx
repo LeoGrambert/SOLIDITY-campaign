@@ -1,13 +1,19 @@
-import React from "react";
+import 'semantic-ui-css/semantic.min.css'
+
 import factory from '../ethereum/factory';
+import ListCampaigns from "../components/Campaigns/ListCampaigns";
+import Layout from '../components/Core/Layout';
 
 const Campaigns = ({ campaigns }) => {
 
   return (
-    <>
-      <h1>Campaigns Index</h1>
-      {campaigns.length > 0 && <div>{JSON.stringify(campaigns)}</div>}
-    </>
+    <Layout>
+      {campaigns.length > 0 && (
+        <div>
+          <ListCampaigns campaigns={campaigns} />
+        </div>
+      )}
+    </Layout>
   );
 };
 
