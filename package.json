@@ -6,10 +6,9 @@
     "dev": "next dev",
     "test": "NODE_OPTIONS=--openssl-legacy-provider mocha",
     "deploy": "NODE_OPTIONS=--openssl-legacy-provider node ethereum/deploy.js",
-    "lint": "eslint \"src/**\"",
-    "prettier:base": "prettier --parser javascript --single-quote",
-    "prettier:check": "npm run prettier:base -- --list-different \"src/**/*.{js}\"",
-    "prettier:write": "npm run prettier:base -- --write \"src/**/*.{js}\"",
+    "lint": "next lint",
+    "prettier:check": "./node_modules/.bin/prettier --check .",
+    "prettier": "./node_modules/.bin/prettier --write .",
     "prepare": "husky install"
   },
   "author": "leogrambert@protonmail.com",
@@ -53,7 +52,7 @@
     "prettier": "^2.3.2"
   },
   "lint-staged": {
-    "*.{js}": "eslint --cache --fix",
-    "*.{js,md}": "prettier --write"
+    "*.{jsx,js}": "eslint --cache --fix",
+    "*.{jsx,js,css,md}": "prettier --write"
   }
 }

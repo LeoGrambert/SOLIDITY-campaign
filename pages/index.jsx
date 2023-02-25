@@ -1,11 +1,8 @@
-import 'semantic-ui-css/semantic.min.css'
-
 import factory from '../ethereum/factory';
-import ListCampaigns from "../components/Campaigns/ListCampaigns";
+import ListCampaigns from '../components/Campaigns/ListCampaigns';
 import Layout from '../components/Core/Layout';
 
-const Campaigns = ({ campaigns }) => {
-
+const CampaignsPage = ({ campaigns }) => {
   return (
     <Layout>
       {campaigns.length > 0 && (
@@ -22,9 +19,9 @@ export async function getServerSideProps() {
 
   return {
     props: {
-      campaigns
-    }
-  }
+      campaigns,
+    },
+  };
 }
 
-export default Campaigns;
+export default CampaignsPage;
