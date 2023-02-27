@@ -5,10 +5,12 @@ import Layout from '../components/Core/Layout';
 const CampaignsPage = ({ campaigns }) => {
   return (
     <Layout>
-      {campaigns.length > 0 && (
+      {campaigns.length > 0 ? (
         <div>
           <ListCampaigns campaigns={campaigns} />
         </div>
+      ) : (
+        <div>No campaigns...</div>
       )}
     </Layout>
   );

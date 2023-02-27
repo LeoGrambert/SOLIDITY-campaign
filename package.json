@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "test": "NODE_OPTIONS=--openssl-legacy-provider mocha",
+    "compile": "NODE_OPTIONS=--openssl-legacy-provider node ethereum/compile.js",
     "deploy": "NODE_OPTIONS=--openssl-legacy-provider node ethereum/deploy.js",
     "lint": "next lint",
     "prettier:check": "./node_modules/.bin/prettier --check .",
