@@ -1,12 +1,19 @@
 import { Menu } from 'semantic-ui-react';
+import Link from 'next/link';
 
 const Header = () => {
   return (
     <Menu style={{ marginTop: '4em' }}>
-      <Menu.Item>KickstartCoin</Menu.Item>
+      <Link href='/' legacyBehavior>
+        <a className='item'>KickstarterCoin</a>
+      </Link>
       <Menu.Menu position='right'>
-        <Menu.Item>Campaigns</Menu.Item>
-        <Menu.Item>+</Menu.Item>
+        <Link href='/' legacyBehavior>
+          <a className='item'>Campaigns</a>
+        </Link>
+        <Link href='/campaigns/new' legacyBehavior>
+          <a className='item'>+</a>
+        </Link>
       </Menu.Menu>
     </Menu>
   );
