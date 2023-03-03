@@ -1,4 +1,5 @@
 import { Card } from 'semantic-ui-react';
+
 import web3 from '../../ethereum/web3';
 
 const Cards = ({ minimumContribution, balance, requestsCount, approversCount, manager }) => {

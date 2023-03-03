@@ -1,14 +1,14 @@
 import { useState } from 'react';
-import { Button, Form, Input, Message } from 'semantic-ui-react';
+import { Form, Input, Message, Button } from 'semantic-ui-react';
 import { useRouter } from 'next/router';
 
-import factory from '../../ethereum/factory';
 import web3 from '../../ethereum/web3';
+import Campaign from '../../ethereum/campaign';
 
-const NewCampaignForm = () => {
+const ContributeForm = ({ address }) => {
   const router = useRouter();
 
-  const [minimumContribution, setMinimumContribution] = useState('');
+  const [value, setValue] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
@@ -16,34 +16,39 @@ const NewCampaignForm = () => {
     e.preventDefault();
     setErrorMsg('');
     setIsLoading(true);
+    const campaign = Campaign(address);
     try {
       const accounts = await web3.eth.getAccounts();
-      await factory.methods.createCampaign(minimumContribution).send({ from: accounts[0] });
-      router.push('/');
+      await campaign.methods.contribute().send({
+        from: accounts[0],
+        value: web3.utils.toWei(value, 'ether'),
+      });
+      router.push(`/campaigns/${address}`);
     } catch (err) {
       setErrorMsg(err.message);
     }
     setIsLoading(false);
+    setValue('');
   };
 
   return (
     <Form onSubmit={(e) => handleOnSubmit(e)} error={errorMsg !== ''}>
       <Form.Field>
-        <label>Minimum contribution</label>
+        <label>Amount to Contribute</label>
         <Input
-          label='Wei'
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+          label='ether'
           labelPosition='right'
-          placeholder='1000000'
-          value={minimumContribution}
-          onChange={(e) => setMinimumContribution(e.target.value)}
+          placeholder='1'
         />
       </Form.Field>
       <Message error header='Oops...' content={errorMsg} />
-      <Button type='submit' loading={isLoading} primary>
-        Create
+      <Button type='submit' primary loading={isLoading}>
+        Contribute!
       </Button>
     </Form>
   );
 };
 
-export default NewCampaignForm;
+export default ContributeForm;
