@@ -1,11 +1,11 @@
 import { useRouter } from 'next/router';
 import { Grid, Button } from 'semantic-ui-react';
+import Link from 'next/link';
 
 import Layout from '../../../components/Core/Layout';
 import getCampaign from '../../../ethereum/campaign';
 import Cards from '../../../components/Campaign/Cards';
-import ContributeForm from '../../../components/Core/ContributeForm';
-import Link from 'next/link';
+import ContributeForm from '../../../components/Campaign/ContributeForm';
 
 const CampaignPage = ({ minimumContribution, balance, requestsCount, approversCount, manager }) => {
   const { query } = useRouter();
@@ -24,14 +24,18 @@ const CampaignPage = ({ minimumContribution, balance, requestsCount, approversCo
               approversCount={approversCount}
               manager={manager}
             />
+          </Grid.Column>
+          <Grid.Column width={6}>
+            <ContributeForm address={address} />
+          </Grid.Column>
+        </Grid.Row>
+        <Grid.Row>
+          <Grid.Column>
             <Link href={`/campaigns/${address}/requests`} legacyBehavior>
               <a>
                 <Button primary>View Requests</Button>
               </a>
             </Link>
-          </Grid.Column>
-          <Grid.Column width={6}>
-            <ContributeForm address={address} />
           </Grid.Column>
         </Grid.Row>
       </Grid>
