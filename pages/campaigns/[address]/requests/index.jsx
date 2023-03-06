@@ -3,8 +3,10 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 import Layout from '../../../../components/Core/Layout';
+import Campaign from '../../../../ethereum/campaign';
+import TableRequest from '../../../../components/Requests/TableRequest';
 
-const CampaignRequestsPage = () => {
+const CampaignRequestsPage = ({ requests, approversCount }) => {
   const { query } = useRouter();
   const address = query.address;
 
@@ -16,8 +18,28 @@ const CampaignRequestsPage = () => {
           <Button primary>Create a Request</Button>
         </a>
       </Link>
+      <TableRequest requests={requests} address={address} approversCount={approversCount} />
     </Layout>
   );
 };
+
+export async function getServerSideProps({ query }) {
+  const address = query.address;
+  const campaign = Campaign(address);
+  const requestCount = await campaign.methods.getRequestsCount().call();
+  const requests = await Promise.all(
+    Array(parseInt(requestCount))
+      .fill()
+      .map((element, index) => campaign.methods.requests(index).call())
+  );
+  const approversCount = await campaign.methods.approversCount().call();
+
+  return {
+    props: {
+      requests: JSON.parse(JSON.stringify(requests)),
+      approversCount,
+    },
+  };
+}
 
 export default CampaignRequestsPage;

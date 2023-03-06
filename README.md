@@ -4,7 +4,7 @@
 ![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)
 ![Mocha](https://img.shields.io/badge/-mocha-%238D6748?style=for-the-badge&logo=mocha&logoColor=white)
 
-# Kickstart POC on Ethereum Testnet Goerli Blockchain using Solidity, Smart Contract & Next.js
+# Kickstarter POC on Ethereum Testnet Goerli Blockchain using Solidity, Smart Contract & Next.js
 
 ## Installation
 
