@@ -15,10 +15,13 @@ const CampaignRequestsPage = ({ requests, approversCount }) => {
       <h3>Requests</h3>
       <Link href={`/campaigns/${address}/requests/new`} legacyBehavior>
         <a>
-          <Button primary>Create a Request</Button>
+          <Button primary floated={'right'} style={{ marginBottom: '1rem' }}>
+            Create a Request
+          </Button>
         </a>
       </Link>
       <TableRequest requests={requests} address={address} approversCount={approversCount} />
+      <div>{`Found ${requests.length} request${requests.length > 1 ? 's' : ''}`}</div>
     </Layout>
   );
 };
