@@ -21,10 +21,10 @@ PRIVATE_KEY=**** **** **** **** **** **** **** **** **** **** **** ****
 INFURA_URL=******
 ```
 
-2/ Call deploy script in order to deploy the smart contract on Goerli Testnet
+2/ Call compile script && deploy script in order to deploy the smart contract on Goerli Testnet
 
 ```
-npm run deploy
+npm run compile && npm run deploy
 ```
 
 3/ Create a .env.local file and copy/paste deployed address displayed in your terminal
@@ -39,7 +39,8 @@ NEXT_PUBLIC_DEPLOY_ADDRESS=0xbc1******
 npm run dev
 ```
 
-Go to localhost:3000
+Go to localhost:3000 && Connect your Metamask with Goerli Testnet account
+**Don't use your real account.**
 
 ## Tests Smart Contract
 
